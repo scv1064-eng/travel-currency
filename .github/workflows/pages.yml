@@ -1,4 +1,4 @@
-name: Deploy Pocket Won to GitHub Pages
+name: Deploy and verify Pocket Won
 on:
   push:
     branches: [main]
@@ -11,7 +11,18 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: node --check dist/app.js && node --check dist/sw.js && node tests/browser.mjs
   deploy:
+    needs: verify
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -19,11 +30,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Verify published app and live rates
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node tests/browser.mjs "$SITE_URL"
