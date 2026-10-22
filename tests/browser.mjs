@@ -19,11 +19,11 @@ try {
  await page.waitForFunction(()=>document.getElementById('result').textContent!=='—',{},{timeout:20000});
  assert.equal(await page.locator('#from option').count(),24);
  if(!deployed){
-  assert.equal(await page.locator('#result').textContent(),'140,000');
+  await page.fill('#amount','100');assert.equal(await page.locator('#result').textContent(),'140,000');
   await page.selectOption('#from','EUR');await page.fill('#amount','9');assert.equal(await page.locator('#result').textContent(),'14,000');
   await page.click('#swap');assert.equal(await page.locator('#from').inputValue(),'KRW');
   await page.fill('#amount','14000');assert.equal(await page.locator('#result').textContent(),'9');
-  await page.locator('.destination[data-code="JPY"]').click();assert.equal(await page.locator('#to').inputValue(),'KRW');
+  await page.selectOption('#from','JPY');await page.selectOption('#to','KRW');assert.equal(await page.locator('.destination').count(),0);
   await page.click('.reset');await page.getByRole('button',{name:'1',exact:true}).click();await page.getByRole('button',{name:'소수점',exact:true}).click();await page.getByRole('button',{name:'5',exact:true}).click();assert.equal(await page.locator('#amount').inputValue(),'1.5');
   await page.fill('#amount','1.2.3.4');assert.equal(await page.locator('#amount').inputValue(),'1.234');
   await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('#amount').inputValue(),'1.234');
@@ -36,6 +36,7 @@ try {
  }
  await page.click('#install');await page.locator('#guide').waitFor({state:'visible'});await page.click('#done');
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ for(const [width,height] of [[320,568],[360,640],[390,844]]){await page.setViewportSize({width,height});const box=await page.locator('#keypad').boundingBox();assert(box.y+box.height<=height);assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight),true);}
  await page.setViewportSize({width:1280,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
- assert.deepEqual(errors,[]);console.log(deployed?'PASS: deployed HTTP, live FX, calculation, service worker offline reload, install guide, responsive layout':'PASS: 24 currencies, cross conversion, swap, presets, keypad, decimal sanitization, preferences, cached fallback, install guide, mobile/desktop widths');
+ assert.deepEqual(errors,[]);console.log(deployed?'PASS: deployed HTTP, live FX, calculation, service worker offline reload, install guide, responsive layout':'PASS: 24 currencies, cross conversion, swap, fixed keypad, decimal sanitization, preferences, cached fallback, install guide, mobile/desktop widths');
 } finally {await browser?.close();server?.kill();}
