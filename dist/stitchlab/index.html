@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#252a3b" />
+  <title>StitchLab Studio | 뜨개 도안 & 실 교체 계산</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B6%3C/text%3E%3C/svg%3E" />
+  <style>
+:root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;--ink:#273042;--muted:#768092;--line:#e8e8ec;--berry:#8c3856;--warm:#fbf8f4;--accent:#bb7256;background:#f5f5f7;color:var(--ink);font-synthesis:none}*{box-sizing:border-box}body{margin:0}a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}.app-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.header-inner{max-width:1370px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:16px 24px}.brand{text-decoration:none;font-size:21px;font-weight:850;letter-spacing:-.9px;display:flex;align-items:center;gap:11px}.brand-mark{background:#2c3143;color:#fff;width:37px;height:37px;border-radius:12px;display:grid;place-items:center;font-size:26px}.brand em{font-size:12px;color:var(--berry);font-weight:700;font-style:normal;letter-spacing:1px}.head-right{display:flex;align-items:center;gap:16px}.cost-pill{font-size:12px;color:#268371;background:#e7f7ef;border-radius:50px;padding:8px 12px;font-weight:800}.head-link{font-size:13px;text-decoration:none;color:#5b6270}.btn{border-radius:11px;font-size:13px;font-weight:800;padding:12px 18px;transition:background .2s,transform .2s;border:1px solid transparent}.btn:active{transform:scale(.99)}.btn.strong{background:#2c3143;color:white}.btn.strong:hover{background:#444a61}.btn.outline{background:white;color:#373d50;border-color:#d9dae1}.btn.outline:hover{background:#faf9fa}.btn.ghost{background:transparent;color:#6b7483}.full{width:100%}.layout{max-width:1370px;margin:auto;padding:35px 24px 70px}.intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:29px}.eyebrow{letter-spacing:2px;font-size:10px;font-weight:900;color:var(--accent);margin:0 0 8px}.intro h1{margin:0;font-size:clamp(27px,3vw,39px);letter-spacing:-1.6px;line-height:1.28}.intro h1 span{color:var(--berry)}.lead{color:#7c8391;margin:12px 0 0;line-height:1.6;font-size:14px}.intro-meta{display:flex;gap:5px;flex-wrap:wrap;min-width:230px;justify-content:flex-end}.intro-meta span{border:1px solid #e6e4e5;background:#fff;border-radius:24px;padding:9px 11px;font-size:11px;color:#677184}.workspace{display:grid;grid-template-columns:minmax(400px, 1fr) minmax(420px, 1.15fr);gap:23px;align-items:start}.column-left,.column-right{display:flex;flex-direction:column;gap:20px;min-width:0}.card{background:#fff;border:1px solid #e6e7eb;border-radius:20px;padding:26px;box-shadow:0 10px 30px #15152c05}.card-head{display:flex;gap:13px;align-items:center;margin-bottom:22px}.step{display:grid;place-items:center;flex:none;border-radius:10px;background:#f5eae6;color:#a15741;width:37px;height:37px;font-weight:900;font-size:13px}.card-head h2,.panel-heading h2{font-size:18px;letter-spacing:-.5px;margin:0}.card-head p{margin:5px 0 0;font-size:12px;color:var(--muted)}.field{margin-top:13px;min-width:0}.field>label:first-child{display:block;font-size:12px;font-weight:760;color:#5b6271;margin-bottom:8px}.field input:not([type=color]):not([type=file]),.field select,.field textarea,#termSearch{border:1px solid #e2e3e8;border-radius:10px;width:100%;background:#fdfdfd;color:#313747;padding:12px 13px;outline:none;font-size:14px;min-height:44px}.field input:focus,.field select:focus,.field textarea:focus,#termSearch:focus{border-color:#a06480;box-shadow:0 0 0 3px #ca83a02c}.field small{display:block;font-size:10px;color:#9298a4;margin-top:5px}.field textarea{resize:vertical}.two,.three{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.three{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.three .field>label:first-child{font-size:11px}.subhead{font-size:13px;font-weight:850;margin-top:22px;margin-bottom:5px;color:#394052}.hint{padding:12px 14px;border-radius:12px;background:#fff8ed;border:1px solid #f3e5c8;color:#7b6348;font-size:11px;line-height:1.65}.required{font-size:10px;font-weight:800;color:#c85b49}.color-row{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;height:44px;padding:5px 9px;background:#fff}.color-row input{height:31px;width:47px;border:0;background:transparent;cursor:pointer}.color-row span{font-size:12px;color:#767b85;font-family:ui-monospace,monospace}.drop{display:flex!important;align-items:center;gap:12px;border:1.5px dashed #dbd6d4;border-radius:13px;background:var(--warm);padding:14px;cursor:pointer}.upload-icon{font-size:24px;color:var(--berry)}.drop strong{font-size:12px;color:#424756;display:block}.drop small{font-weight:400;font-size:10px;margin-left:auto;text-align:right}.textbutton{background:none;color:#8b4c5b;border:0;font-size:11px;margin-top:6px;padding:0}.advanced{background:#f9fafb;border-radius:12px;padding:12px 14px;margin-top:19px;font-size:12px;color:#657084}.advanced summary{cursor:pointer;font-weight:750;color:#444a5b}.advanced p{font-size:11px;line-height:1.6}.advanced .field>label:first-child{font-size:11px}.footnote{font-size:11px;color:#86909e;line-height:1.8;margin:12px 0 0}.card .full{margin-top:16px}.visual-card{padding:0;overflow:hidden}.visual-head{display:flex;align-items:center;justify-content:space-between;padding:22px 25px 15px}.visual-head h2{font-size:18px;letter-spacing:-.4px;margin:0}.live-pill{font-size:11px;background:#e8f5f0;color:#36806d;border-radius:20px;padding:7px 11px;font-weight:800;white-space:nowrap}.preview{height:330px;background:radial-gradient(circle at 70% 20%,#fff 0%,#f7f1ec 56%,#efe8e3 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.preview svg{height:100%;width:100%;max-width:480px}.preview img{width:100%;height:100%;object-fit:contain}.preview-foot{padding:14px 24px;display:flex;justify-content:space-between;font-size:12px;color:#747a86}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.subpill{padding:6px 10px;border-radius:20px;background:#f4f4f7;color:#848999;font-size:10px;white-space:nowrap}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.metric{background:#f7f7f9;border-radius:14px;padding:18px}.metric label{color:#8892a1;font-size:12px;display:block;margin-bottom:7px}.value{font-weight:850;font-size:clamp(25px,3vw,34px);letter-spacing:-1px}.delta{font-size:11px;margin-top:4px;font-weight:700;color:#ad4d55}.delta.neutral{color:#51856f}.divider{height:1px;background:#eee;margin:20px 0}.numbers-card h3{font-size:13px;margin:0 0 11px}.inline-results{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px dashed #edeef0;font-size:12px;align-items:center}.inline-results span{color:#7e8694}.inline-results strong{font-size:13px;white-space:nowrap}.safety{font-size:11px;color:#957b53;line-height:1.65;padding:11px 12px;background:#fffbf3;border:1px solid #f3ecdd;border-radius:10px;margin:16px 0 0}.empty-state{font-size:13px;color:#808999;padding:24px;border-radius:11px;background:#f8f8fa;line-height:1.8}.skein-wrap{display:flex;align-items:center;justify-content:space-between;background:#fcf6f5;border-radius:13px;padding:18px}.huge strong{font-size:50px;line-height:1;font-weight:900;color:var(--berry)}.huge span{font-size:16px;margin-left:6px;color:#67475a}.yarn-symbol{font-size:64px;line-height:1;color:#bd91a1}.advice{margin:0;padding-left:20px;color:#596275;font-size:12px;line-height:1.85}.advice li{padding:6px 0}.diagram{padding:4px;background:#fff;border:1px solid #ecebee;border-radius:12px;display:flex;justify-content:center}.diagram svg{max-width:100%;height:auto}.pattern-guide{font-size:12px;line-height:1.7;color:#5e6878}.pattern-guide p{margin:12px 0}.pattern-guide ul{padding-left:19px}.inline-term{color:#8c3856;text-decoration:none;border-bottom:1px dotted #b78396;font-weight:750}.inline-term:hover{background:#fff0f4}.term-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.term-link{display:inline-flex;gap:6px;align-items:center;text-decoration:none;border:1px solid #e5e1e4;background:#fff;border-radius:20px;padding:9px 11px;font-size:12px;color:#72435f;font-weight:750}.term-link:hover{background:#fcf4f6}.term-link::after{content:'↗';font-size:11px}.term-link[title]:focus-visible{outline:2px solid #8c3856}.action-strip{padding:0 12px;text-align:center}.action-strip>.btn{margin-bottom:7px}.upload-json{display:flex;justify-content:center;align-items:center}.upload-json label{cursor:pointer}.action-strip p{font-size:11px;color:#9da1ac;line-height:1.7}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:white;background:#293043;border-radius:12px;padding:13px 20px;font-size:12px;z-index:20;display:none;box-shadow:0 5px 20px #2226}.toast.show{display:block}.print-area{display:none}@media(max-width:960px){.workspace{grid-template-columns:1fr}.intro{align-items:start}.intro-meta{display:none}.preview{height:320px}.layout{max-width:730px}.head-right{gap:9px}}@media(max-width:560px){.header-inner{padding:12px 14px}.brand{font-size:18px}.brand-mark{width:34px;height:34px}.head-link,.cost-pill{display:none}.head-right .btn{padding:10px 13px;font-size:12px}.layout{padding:24px 13px 40px}.intro{margin-bottom:21px}.intro h1{letter-spacing:-1.2px}.lead{font-size:12px}.card{padding:19px;border-radius:17px}.column-left,.column-right{gap:14px}.visual-card{padding:0}.two,.three{gap:9px}.three .field input{padding:10px 5px;text-align:center}.drop{gap:8px}.drop small{font-size:9px}.preview{height:270px}.metric{padding:12px}.value{font-size:27px}.visual-head{padding:18px}.intro h1{font-size:27px}}
+@page{size:A4;margin:14mm 15mm}@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}html,body{margin:0!important;background:white!important;color:#202532!important;font-family:"Malgun Gothic",sans-serif}.no-print,.app-header,.toast{display:none!important}.print-area{display:block!important}.print-page{page-break-after:always;min-height:255mm;position:relative}.print-page:last-child{page-break-after:auto}.print-top{display:flex;justify-content:space-between;align-items:center;color:#555;font-size:10px;border-bottom:1px solid #ececec;padding-bottom:9px;margin-bottom:24px}.print-top b{color:#3b3341;letter-spacing:1px}.print-title{font-size:29px;color:#8c3856;margin:0 0 15px;line-height:1.38}.print-sub{font-size:12px;color:#777}.print-image{height:125mm;border-radius:8px;background:#f7f4f4;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:15px 0}.print-image img{height:100%;width:100%;object-fit:contain}.print-image svg{height:100%;max-width:100%}.print-meta{width:100%;border-collapse:collapse;font-size:12px;margin:16px 0}.print-meta th,.print-meta td{padding:8px 10px;text-align:left;border:1px solid #e7e7e7}.print-meta th{background:#f7f3f3;width:30%}.print-h2{font-size:18px;color:#8c3856;border-bottom:2px solid #f0e0e3;padding-bottom:7px;margin-top:22px}.print-p{font-size:12px;line-height:1.75}.print-list{font-size:12px;line-height:1.8;padding-left:20px}.print-list li{margin:7px 0;break-inside:avoid}.print-warning{background:#fff8ec;color:#685743;padding:10px 12px;font-size:11px;line-height:1.6;border-radius:7px}.print-diagram svg{max-height:105mm;width:100%}.print-page footer{position:absolute;bottom:3mm;left:0;right:0;border-top:1px solid #eee;padding-top:9px;color:#999;font-size:9px;display:flex;justify-content:space-between}.print-links{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.print-links a{font-size:11px;color:#7e4562;text-decoration:none}.print-break{break-inside:avoid}.print-small{font-size:10px;color:#777}.print-image.photo img{object-fit:contain}}
+
+<style>.upload-panel{border:1.5px solid #e3d7d5;border-radius:13px;background:#fbf8f4;padding:13px;display:grid;gap:10px}.upload-hint{display:flex;align-items:center;gap:10px;color:#424756;font-size:13px}.upload-panel input[type=file],.upload-json input[type=file]{display:block;max-width:100%;width:100%;font-size:13px;line-height:1.5;color:#555e6b;border:1px solid #ddd2d5;border-radius:9px;background:white;padding:8px}.upload-panel input[type=file]::file-selector-button,.upload-json input[type=file]::file-selector-button{background:#8c3856;color:white;border:0;border-radius:7px;padding:9px 13px;margin-right:10px;font:inherit;font-weight:750;cursor:pointer}.upload-panel small{font-size:11px;line-height:1.5;color:#7f8190}.upload-json{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px;text-align:left;margin-top:14px}.upload-json label{grid-column:1/-1;font-size:12px;font-weight:750;color:#626b77}.upload-json input[type=file]{grid-column:1}.upload-json .btn{grid-column:2;min-width:60px}.pdf-help{background:#f4f7fc;border-radius:9px;color:#5a6170!important;padding:10px 12px;margin:3px 0 12px!important;font-size:11px;line-height:1.7}@media(max-width:560px){.upload-panel input[type=file]{font-size:12px}.upload-panel input[type=file]::file-selector-button{padding:10px 9px;font-size:11px}.upload-json{grid-template-columns:1fr}.upload-json label,.upload-json input[type=file],.upload-json .btn{grid-column:1}}</style>
+</head>
+<body>
+  <header class="app-header no-print">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="StitchLab 홈"><span class="brand-mark">✳</span><span>StitchLab <em>studio</em></span></a>
+      <div class="head-right"><span class="cost-pill">● AI API 비용 0원</span><span class="head-link">오프라인 실행</span><button id="printTop" class="btn strong">PDF 도안 만들기</button></div>
+    </div>
+  </header>
+
+  <main class="layout no-print">
+    <div class="intro">
+      <div><p class="eyebrow">PERSONAL PATTERN WORKSPACE</p><h1>내 작품에 맞게, <span>계산해서 뜨세요.</span></h1><p class="lead">원본 도안의 치수와 실 정보를 입력하면 새로운 실에 맞는 게이지·실 수량·수정 안내를 자동 계산합니다.</p></div>
+      <div class="intro-meta"><span>사진 선택</span><span>게이지 분석</span><span>A4 PDF 저장</span></div>
+    </div>
+
+    <div class="workspace">
+      <section class="column-left">
+        <article class="card" aria-labelledby="part1"><div class="card-head"><span class="step">01</span><div><h2 id="part1">작품 기본 정보</h2><p>만들 작품과 목표 크기 설정</p></div></div>
+          <div class="field"><label for="name">도안 제목</label><input id="name" maxlength="80" value="나만의 라운드넥 가디건" /></div>
+          <div class="two"><div class="field"><label for="projectType">작품 종류</label><select id="projectType"><option value="cardigan">가디건</option><option value="sweater">스웨터</option><option value="vest">조끼</option><option value="bag">가방 (기본 패널)</option><option value="pouch">파우치 (기본 패널)</option><option value="wallet">지갑 (기본 패널)</option><option value="scarf">목도리 (기본 패널)</option></select></div><div class="field"><label for="craft">뜨개 방식</label><select id="craft"><option value="knitting">대바늘</option><option value="crochet">코바늘</option></select></div></div>
+          <div class="two"><div class="field"><label for="size">참고 크기</label><select id="size"><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option value="custom">직접 입력</option></select></div><div class="field"><label for="color">예상 색상</label><div class="color-row"><input id="color" type="color" value="#872f4d"/><span id="colorText">#872F4D</span></div></div></div>
+          <div class="two"><div class="field"><label for="targetWidth" id="targetWidthLabel">목표 가슴둘레 (cm)</label><input id="targetWidth" type="number" min="1" max="500" step="0.5" value="105"></div><div class="field"><label for="targetLength">목표 길이 (cm)</label><input id="targetLength" type="number" min="1" max="500" step="0.5" value="54"></div></div>
+          <div class="field"><label for="photo">참고 사진 (선택)</label><div class="upload-panel"><div class="upload-hint"><span class="upload-icon" aria-hidden="true">▧</span><strong id="photoText">아래 버튼으로 사진을 선택하세요</strong></div><input id="photo" type="file" accept="image/*" aria-label="사진첩 또는 파일에서 참고 사진 선택"/><small>휴대전화 사진첩·파일 선택 지원 · 최대 30MB · 사진은 서버로 전송하지 않습니다.</small></div><button type="button" class="textbutton" id="removePhoto" hidden>사진 제거</button></div>
+        </article>
+
+        <article class="card" aria-labelledby="part2"><div class="card-head"><span class="step">02</span><div><h2 id="part2">원본 도안 기준</h2><p>기존 작품의 실과 게이지</p></div></div>
+          <div class="hint">업로드하신 가디건 자료의 XS 게이지·치수를 예시로 입력했습니다. <b>한 타래의 길이(m)는 자료에 없어 비워두었습니다.</b></div>
+          <div class="two"><div class="field"><label for="baseWidth" id="baseWidthLabel">원본 가슴둘레 (cm)</label><input id="baseWidth" type="number" min="1" step="0.5" value="105" /></div><div class="field"><label for="baseLength">원본 옷길이 (cm)</label><input id="baseLength" type="number" min="1" step="0.5" value="54" /></div></div>
+          <div class="subhead">원본 게이지 (10cm 기준)</div><div class="two"><div class="field"><label for="baseSt">코 수</label><input id="baseSt" type="number" min="0.1" step="0.5" value="12" /></div><div class="field"><label for="baseRows">단 수</label><input id="baseRows" type="number" min="0.1" step="0.5" value="18" /></div></div>
+          <div class="subhead">원본 실 정보</div><div class="three"><div class="field"><label for="originalBalls">사용 타래</label><input id="originalBalls" type="number" min="0.1" step="0.5" value="6" /></div><div class="field"><label for="originalGrams">g/타래</label><input id="originalGrams" type="number" min="1" step="1" value="100" /></div><div class="field"><label for="originalMeters">m/타래 <span class="required">필수</span></label><input id="originalMeters" type="number" min="1" step="1" placeholder="실 라벨 확인" /></div></div>
+        </article>
+
+        <article class="card" aria-labelledby="part3"><div class="card-head"><span class="step">03</span><div><h2 id="part3">대체할 실 입력</h2><p>게이지 차이 및 필요 타래 계산</p></div></div>
+          <div class="subhead">새 게이지 (10cm 기준)</div><div class="two"><div class="field"><label for="newSt">코 수</label><input id="newSt" type="number" min="0.1" step="0.5" value="14" /></div><div class="field"><label for="newRows">단 수</label><input id="newRows" type="number" min="0.1" step="0.5" value="20" /></div></div>
+          <div class="subhead">대체 실 라벨 정보</div><div class="two"><div class="field"><label for="newGrams">한 타래 무게 (g)</label><input id="newGrams" type="number" min="1" step="1" value="100" /></div><div class="field"><label for="newMeters">한 타래 길이 (m) <span class="required">필수</span></label><input id="newMeters" type="number" min="1" step="1" placeholder="예: 160" /></div></div>
+          <div class="two"><div class="field"><label for="utilization">원본 실 실제 사용 추정 (%)</label><input id="utilization" type="number" min="0" max="100" value="100" /><small>남은 실을 모르시면 100%</small></div><div class="field"><label for="reserve">구매 여유분 (%)</label><input id="reserve" type="number" min="0" max="100" value="10" /></div></div>
+          <details class="advanced"><summary>더 정확하게: 10×10cm 스와치 실측 무게 입력</summary><p>같은 조직으로 만든 세탁·블로킹 후 스와치의 소모 실 무게를 각 실별로 입력하면 게이지 기반 추정보다 근거가 좋아집니다. 두 값 모두 입력해야 합니다.</p><div class="two"><div class="field"><label for="origSwatch">원본 실 스와치 소모 (g)</label><input id="origSwatch" type="number" min="0" step="0.1" placeholder="선택" /></div><div class="field"><label for="newSwatch">대체 실 스와치 소모 (g)</label><input id="newSwatch" type="number" min="0" step="0.1" placeholder="선택" /></div></div></details>
+          <button id="sampleYarn" class="btn outline full">계산 연습용 가상 실 길이 채우기</button>
+          <p class="footnote">실 길이와 게이지만으로 사용량을 확정할 수 없습니다. 무늬·섬유·장력·봉제 및 여분 때문에 오차가 발생합니다.</p>
+        </article>
+
+        <article class="card" aria-labelledby="part4"><div class="card-head"><span class="step">04</span><div><h2 id="part4">원하는 변형</h2><p>변경할 부분을 입력하면 작업 팁을 생성합니다</p></div></div>
+          <div class="two"><div class="field"><label for="sleeveAdd">소매 길이 변경 (cm)</label><input id="sleeveAdd" type="number" step="1" value="5"/><small>늘이기 + / 줄이기 -</small></div><div class="field"><label for="ribAdd">고무단 길이 변경 (cm)</label><input id="ribAdd" type="number" step="1" value="0" /></div></div>
+          <div class="two"><div class="field"><label for="buttons">단추 개수</label><input id="buttons" type="number" min="0" max="30" step="1" value="6" /></div><div class="field"><label for="method">완성 시 예상 사용법</label><select id="method"><option value="fit">치수 유지해서 다시 계산</option><option value="original">원본 코 수 그대로 사용</option></select></div></div>
+          <div class="field"><label for="memo">내 메모 (PDF에 포함)</label><textarea id="memo" rows="2" placeholder="예: 소매를 더 길게, 단추는 검정색으로..."></textarea></div>
+        </article>
+      </section>
+
+      <section class="column-right" aria-live="polite">
+        <article class="card visual-card"><div class="visual-head"><div><p class="eyebrow">LIVE PREVIEW</p><h2 id="previewTitle">라운드넥 가디건</h2></div><span class="live-pill">● 실시간 계산</span></div>
+          <div class="preview" id="preview"></div>
+          <div class="preview-foot"><span id="previewSize">XS · 가슴둘레 105cm</span><span id="previewCraft">대바늘</span></div>
+        </article>
+        <article class="card numbers-card"><div class="panel-heading"><h2>게이지 변화 결과</h2><span class="subpill">같은 코·단 수 유지 시</span></div><div class="metric-grid"><div class="metric"><label id="metricWidthLabel">예상 가슴둘레</label><div class="value" id="fixedWidth">—</div><div id="widthDelta" class="delta">—</div></div><div class="metric"><label>예상 길이</label><div class="value" id="fixedLength">—</div><div id="lengthDelta" class="delta">—</div></div></div><div class="divider"></div><h3>목표 치수를 유지하려면</h3><div class="inline-results"><span>기준 폭의 등가 코 수</span><strong id="stitchesNeeded">—</strong></div><div class="inline-results"><span>기준 길이의 등가 단 수</span><strong id="rowsNeeded">—</strong></div><p class="safety" id="gaugeDisclaimer">단·코 수는 폭·길이 환산값입니다. 래글런 실제 시작 코 수와 다릅니다.</p></article>
+        <article class="card yarn-result"><div class="panel-heading"><h2>대체 실 소요량</h2><span class="subpill">구매 계산</span></div><div id="yarnEmpty" class="empty-state">원본과 대체실의 <b>한 타래당 길이(m)</b>를 입력하면 필요한 실을 계산합니다.</div><div id="yarnValues" hidden><div class="skein-wrap"><div><div class="eyebrow">예상 필요 타래</div><div class="huge"><strong id="yarnBalls">—</strong><span>타래</span></div></div><div class="yarn-symbol">◉</div></div><div class="inline-results"><span>추정 실제 실 사용량</span><strong id="yarnMeters">—</strong></div><div class="inline-results"><span>여유분 포함 필요 길이</span><strong id="yarnReserve">—</strong></div><div class="inline-results"><span>추정 소모 무게</span><strong id="yarnGrams">—</strong></div><div class="inline-results"><span>타래 범위 (불확실성)</span><strong id="yarnRange">—</strong></div><p id="yarnMode" class="safety"></p></div></article>
+        <article class="card"><div class="panel-heading"><h2>변형 방법 안내</h2><span class="subpill">규칙 기반 생성</span></div><ol id="advice" class="advice"></ol></article>
+        <article class="card"><div class="panel-heading"><h2>제작 설명 / 설계도</h2><span id="patternLevel" class="subpill">기본 설계서</span></div><div class="diagram" id="diagram"></div><div id="patternGuide" class="pattern-guide"></div></article>
+        <article class="card"><div class="panel-heading"><h2>뜨개 용어 동영상</h2><span class="subpill">유튜브 검색 연결</span></div><p class="footnote">용어를 누르면 해당 기법의 유튜브 검색 결과가 새 창에서 열립니다. 영상 링크는 유튜브가 제공하는 검색 결과를 사용하며 API 키가 필요 없습니다.</p><input type="search" id="termSearch" placeholder="예: M1R, 래글런, 고무뜨기" aria-label="뜨개 용어 검색" /><div id="terms" class="term-list"></div></article>
+        <div class="action-strip"><button id="printBottom" class="btn strong full">↧ PDF 도안 만들기</button><p class="pdf-help">버튼을 누르고 브라우저 인쇄 화면에서 <b>PDF로 저장</b>을 선택하세요. 열리지 않으면 Chrome에서 이 페이지를 여세요.</p><button id="downloadJson" class="btn outline full">프로젝트 JSON 저장</button><div class="upload-json"><label for="importJson">저장한 설정 파일 선택</label><input type="file" id="importJson" accept="application/json,.json"/><button id="reset" class="btn ghost">초기화</button></div><p>입력 내용은 이 브라우저에 저장됩니다. 사진은 외부 전송하지 않으며 페이지 새로고침 시 다시 선택해야 합니다.</p></div>
+      </section>
+    </div>
+  </main>
+  <section id="printArea" class="print-area" aria-label="인쇄용 뜨개 도안"></section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module">
+/** StitchLab numeric core: client-side only; no external dependencies. */
+const finite = (v, label) => {
+  const x = Number(v);
+  if (!Number.isFinite(x) || x <= 0) throw new Error(`${label}은(는) 0보다 큰 숫자여야 합니다.`);
+  return x;
+};
+const nonnegative = (v, label) => {
+  const x = Number(v);
+  if (!Number.isFinite(x) || x < 0) throw new Error(`${label}은(는) 0 이상의 숫자여야 합니다.`);
+  return x;
+};
+const roundTo = (v, digits=1) => Number(v.toFixed(digits));
+const youtubeSearch = (keyword) => `https://www.youtube.com/results?search_query=${encodeURIComponent(`${keyword} 뜨개질 방법`)}`;
+const stitchTerms = [
+  ['게이지','10cm 안에 들어가는 코 수와 단 수. 세탁·블로킹 후 샘플 중앙을 측정합니다.'],
+  ['코잡기','대바늘에 첫 코들을 만드는 작업입니다.'],
+  ['겉뜨기','대바늘로 편물의 겉면에서 V 모양의 코를 만듭니다.'],
+  ['안뜨기','대바늘로 실이 앞에 오도록 하여 코를 뜹니다.'],
+  ['메리야스뜨기','평면뜨기에서 겉면 겉뜨기, 안면 안뜨기를 번갈아 뜹니다.'],
+  ['고무뜨기','겉뜨기·안뜨기를 교대로 배치한 신축성 있는 조직입니다.'],
+  ['래글런','목 근처에서 몸통과 소매로 이어지는 대각선 성형선입니다.'],
+  ['M1R','오른쪽으로 기울어 보이도록 1코를 늘리는 대바늘 기법입니다.'],
+  ['M1L','왼쪽으로 기울어 보이도록 1코를 늘리는 대바늘 기법입니다.'],
+  ['k2tog','두 코를 한꺼번에 겉뜨기로 떠서 1코를 줄입니다.'],
+  ['ssk','두 코를 걸러 옮긴 후 함께 떠 왼쪽으로 기울어지게 줄입니다.'],
+  ['코막음','마지막 단의 코를 풀리지 않게 마무리합니다.'],
+  ['돗바늘 마무리','실 끝을 편물 안으로 감추고 이음매를 정리합니다.'],
+  ['사슬뜨기','코바늘의 기본 고리 사슬을 만드는 기법입니다.'],
+  ['짧은뜨기','코바늘을 한 코에 넣고 실을 걸어 빼며 뜹니다.'],
+  ['한길긴뜨기','실을 한 번 감고 코에 넣어 단계적으로 빼는 기법입니다.'],
+  ['블로킹','완성 편물을 적시거나 스팀 등으로 치수를 정돈하는 과정입니다.'],
+];
+const sampleSizes = {
+  XS:{width:105,length:54,balls:6}, S:{width:112,length:55,balls:7},
+  M:{width:119,length:56,balls:7}, L:{width:125,length:57,balls:8},
+  XL:{width:135,length:58,balls:8}, '2XL':{width:144,length:60,balls:9},
+  '3XL':{width:152,length:61,balls:9}
+};
+/** Formula assumes dimensions in cm, both gauges expressed per 10 cm. */
+function calculateGauge(raw){
+  const baseWidth=finite(raw.baseWidth,'원본 폭/둘레');
+  const baseLength=finite(raw.baseLength,'원본 길이');
+  const baseSt=finite(raw.baseSt,'원본 코 게이지');
+  const baseRows=finite(raw.baseRows,'원본 단 게이지');
+  const newSt=finite(raw.newSt,'대체실 코 게이지');
+  const newRows=finite(raw.newRows,'대체실 단 게이지');
+  const targetWidth=finite(raw.targetWidth,'목표 폭/둘레');
+  const targetLength=finite(raw.targetLength,'목표 길이');
+  const fixedWidth=baseWidth*baseSt/newSt;
+  const fixedLength=baseLength*baseRows/newRows;
+  const widthChangePct=(fixedWidth/baseWidth-1)*100;
+  const lengthChangePct=(fixedLength/baseLength-1)*100;
+  return {
+    fixedWidth:roundTo(fixedWidth), fixedLength:roundTo(fixedLength),
+    widthDiff:roundTo(fixedWidth-baseWidth), lengthDiff:roundTo(fixedLength-baseLength),
+    widthChangePct:roundTo(widthChangePct), lengthChangePct:roundTo(lengthChangePct),
+    originalWidthEquivalentStitches:Math.round(baseWidth*baseSt/10),
+    targetWidthEquivalentStitches:Math.round(targetWidth*newSt/10),
+    originalLengthEquivalentRows:Math.round(baseLength*baseRows/10),
+    targetLengthEquivalentRows:Math.round(targetLength*newRows/10),
+    extraStitches:Math.round(targetWidth*newSt/10)-Math.round(baseWidth*baseSt/10),
+    extraRows:Math.round(targetLength*newRows/10)-Math.round(baseLength*baseRows/10),
+    areaRatio:(targetWidth*targetLength)/(baseWidth*baseLength),
+    stitchRatio:newSt/baseSt,rowRatio:newRows/baseRows
+  };
+}
+/** Consumption estimates are relative to baseline yarn-length purchase, not exact. */
+function calculateYarn(raw, gauge){
+  const originalBalls=finite(raw.originalBalls,'원본 타래 수');
+  const originalMeters=finite(raw.originalMeters,'원본 한 타래 길이');
+  const originalGrams=finite(raw.originalGrams,'원본 한 타래 무게');
+  const newMeters=finite(raw.newMeters,'대체실 한 타래 길이');
+  const newGrams=finite(raw.newGrams,'대체실 한 타래 무게');
+  const utilization=nonnegative(raw.utilization,'기존 실 사용률');
+  const reserve=nonnegative(raw.reserve,'여유분');
+  if (utilization>100 || reserve>100) throw new Error('실 사용률과 여유분은 0~100%로 입력해주세요.');
+  const origSwatch=Number(raw.origSwatch)||0;
+  const newSwatch=Number(raw.newSwatch)||0;
+  if (origSwatch<0 || newSwatch<0) throw new Error('스와치 무게는 0보다 작을 수 없습니다.');
+  if ((origSwatch>0)!==(newSwatch>0)) throw new Error('스와치 무게는 원본과 대체실을 모두 입력하거나 둘 다 비워주세요.');
+  let densityRatio, mode, uncertainty;
+  if(origSwatch>0 && newSwatch>0){
+    // A washed and blocked 10×10 cm swatch in the *same* stitch pattern.
+    densityRatio=(newSwatch*newMeters/newGrams)/(origSwatch*originalMeters/originalGrams);
+    mode='스와치 무게 실측 기반'; uncertainty=.15;
+  } else {
+    // Heuristic for loop geometry, not a validated yarn substitution law.
+    densityRatio=Math.sqrt(gauge.stitchRatio*gauge.rowRatio);
+    mode='게이지 기반 경험적 추정'; uncertainty=.30;
+  }
+  const originalReferenceMeters=originalBalls*originalMeters*(utilization/100);
+  const workingMeters=originalReferenceMeters*gauge.areaRatio*densityRatio;
+  const withReserve=workingMeters*(1+reserve/100);
+  const yarnSkeins=Math.ceil(withReserve/newMeters);
+  return {
+    originalReferenceMeters:roundTo(originalReferenceMeters),
+    estimateMeters:roundTo(workingMeters),
+    reserveMeters:roundTo(withReserve),
+    skeins:yarnSkeins, gramsConsumed:roundTo(workingMeters/newMeters*newGrams),
+    gramsPurchased:roundTo(yarnSkeins*newGrams),
+    minSkeins:Math.ceil(withReserve*(1-uncertainty)/newMeters),
+    maxSkeins:Math.ceil(withReserve*(1+uncertainty)/newMeters),
+    densityRatio:roundTo(densityRatio,3),
+    mode, uncertaintyPct:uncertainty*100
+  };
+}
+function rectangularPattern(raw){
+  if(!['scarf','wallet','pouch','bag'].includes(raw.projectType)) return null;
+  const width=finite(raw.targetWidth,'목표 폭');
+  const length=finite(raw.targetLength,'목표 길이');
+  const st=finite(raw.newSt,'코 게이지');
+  const rows=finite(raw.newRows,'단 게이지');
+  const knit=raw.craft !== 'crochet';
+  const panels=raw.projectType==='bag'||raw.projectType==='pouch'?2:1;
+  const panelLength=raw.projectType==='wallet'?length*2:length;
+  const stitches=Math.max(2,Math.round(width*st/10));
+  const rowCount=Math.max(2,Math.round(panelLength*rows/10));
+  return {
+    stitches,rows:rowCount,panels,panelLength:roundTo(panelLength),
+    stitchName:knit?'가터뜨기':'짧은뜨기',
+    steps: knit ? [
+      `각 패널마다 ${stitches}코를 잡습니다.`,
+      `1단부터 ${rowCount}단까지 매 단 모든 코를 겉뜨기합니다(가터뜨기).`,
+      `약 ${panelLength}cm가 되면 코막음하고 치수를 재확인합니다.`
+    ]:[
+      `각 패널마다 사슬 ${stitches+1}개를 만듭니다(기둥코 포함; 실제 게이지 확인).`,
+      `2번째 사슬부터 짧은뜨기하여 ${stitches}코를 만듭니다.`,
+      `다음 단부터 기둥사슬 1개, 돌아서 짧은뜨기 ${stitches}코를 ${rowCount}단까지 반복합니다.`,
+      `약 ${panelLength}cm가 되면 실을 정리합니다.`
+    ],
+    assembly: raw.projectType==='wallet'?'중앙에서 반으로 접고 양쪽 옆면을 잇습니다. 여밈장치·두께 보정은 별도로 확인합니다.':
+      (panels===2?'패널 두 장의 양쪽과 바닥을 잇습니다. 손잡이·안감·지퍼는 별도 설계합니다.':'완성 후 스팀/블로킹하여 최종 치수를 확인합니다.')
+  };
+}
+function modificationAdvice(raw,gauge){
+  const isClothing=['cardigan','sweater','vest'].includes(raw.projectType);
+  const sleeveIncrease=Number(raw.sleeveAdd)||0;
+  const ribIncrease=Number(raw.ribAdd)||0;
+  const buttonCount=Number(raw.buttons)||0;
+  const notes=[];
+  if(Math.abs(gauge.widthChangePct)>5 || Math.abs(gauge.lengthChangePct)>5){
+    notes.push(`원본 코·단 수 그대로 뜨면 폭은 ${Math.abs(gauge.widthChangePct)}% ${gauge.widthChangePct<0?'작아지고':'커지고'}, 길이는 ${Math.abs(gauge.lengthChangePct)}% ${gauge.lengthChangePct<0?'짧아집니다':'길어집니다'}. 먼저 바늘 굵기와 스와치를 조정해 보세요.`);
+  }
+  notes.push(`목표 폭 기준 등가 코 수는 약 ${gauge.targetWidthEquivalentStitches}코, 목표 길이 기준 등가 단 수는 약 ${gauge.targetLengthEquivalentRows}단입니다. 이는 완성 치수 환산용으로 실제 시작 코 수와 다릅니다.`);
+  if(isClothing){
+    notes.push('가슴둘레 수정 시 앞판·뒤판·소매 분리 지점의 코 수와 래글런 증감 반복을 함께 다시 설계해야 합니다. 단순히 시작 코 수를 바꾸면 맞지 않을 수 있습니다.');
+    if(sleeveIncrease) notes.push(`소매 길이 ${sleeveIncrease>0?'+':''}${sleeveIncrease}cm 변경 → 새 단 게이지 기준 약 ${Math.round(Math.abs(sleeveIncrease)*raw.newRows/10)}단 ${sleeveIncrease>0?'추가':'단축'}가 필요합니다. 소매 코줄임·커프 시작 위치도 조정하세요.`);
+    if(ribIncrease) notes.push(`고무단 ${ribIncrease>0?'+':''}${ribIncrease}cm 변경 → 약 ${Math.round(Math.abs(ribIncrease)*raw.newRows/10)}단 차이입니다. 몸통 전체 길이를 유지하려면 같은 길이만큼 메리야스 구간을 반대로 조정하세요.`);
+    if(raw.projectType==='cardigan' && buttonCount>=2) notes.push(`단추 ${buttonCount}개: 양끝에서 약 2cm 띄우는 단순 가정으로 약 ${roundTo(Math.max(0,Number(raw.targetLength)-4)/(buttonCount-1))}cm 간격을 검토하세요. 실제 네크밴드 길이와 단추 지름에 따라 다시 배치해야 합니다.`);
+    notes.push('목둘레 깊이·암홀·래글런선은 전체 코·단 수만으로 재설계할 수 없습니다. 해당 구간의 원본 코 수, 증가 간격, 분리 지점이 있어야 검증할 수 있습니다.');
+  }else{
+    notes.push('사각 패널 도안은 목표 가로·세로 및 새 게이지에 맞춰 시작 코 수와 총 단 수를 변경할 수 있습니다. 다만 무늬 반복 단위, 가장자리 코, 봉제 여유는 따로 고려하세요.');
+  }
+  return notes;
+}
+
+
+
+const $ = id => document.getElementById(id);
+const fields=['name','projectType','craft','size','color','targetWidth','targetLength','baseWidth','baseLength','baseSt','baseRows','originalBalls','originalGrams','originalMeters','newSt','newRows','newGrams','newMeters','utilization','reserve','origSwatch','newSwatch','sleeveAdd','ribAdd','buttons','method','memo'];
+const defaults = Object.fromEntries(fields.map(id=>[id,$(id).value]));
+const KEY='stitchlab-studio-v2';
+const names={cardigan:'가디건',sweater:'스웨터',vest:'조끼',bag:'가방',pouch:'파우치',wallet:'지갑',scarf:'목도리'};
+let photoURL=null, lastGauge=null, lastYarn=null, lastPattern=null, lastAdvice=[];
+const htmlEsc = (s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeColor=s=>/^#[0-9a-fA-F]{6}$/.test(s)?s:'#872f4d';
+const data=()=>Object.fromEntries(fields.map(id=>[id,$(id).value]));
+const txt=(id,value)=>{$(id).textContent=String(value)};
+const cm=v=>`${roundTo(v)}cm`;
+const num = n=>new Intl.NumberFormat('ko-KR',{maximumFractionDigits:1}).format(n);
+function toast(message){ const node=$('toast');node.textContent=message;node.classList.add('show');window.clearTimeout(toast.timer);toast.timer=setTimeout(()=>node.classList.remove('show'),3500); }
+function save(){try{localStorage.setItem(KEY,JSON.stringify({schema:2,values:data()}));}catch(_){/* private mode / full storage */}}
+function setValues(values){fields.forEach(id=>{if(Object.hasOwn(values,id) && typeof values[id]!=='object')$(id).value=String(values[id]).slice(0,3000)});}
+function load(){try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved?.schema===2 && saved.values && typeof saved.values==='object')setValues(saved.values)}catch(_){}}
+function prettySize(s){return s==='custom'?'맞춤':s}
+function projectSVG(type,color){
+  const fill=safeColor(color), light='#ffffff';
+  const defs=`<defs><linearGradient id="fabric" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${fill}"/><stop offset="1" stop-color="${fill}" stop-opacity=".8"/></linearGradient><pattern id="rib" width="7" height="8" patternUnits="userSpaceOnUse"><path d="M 2 0 L 2 8" stroke="white" stroke-opacity=".17" stroke-width="1.5"/></pattern></defs>`;
+  let shape='';
+  if(['cardigan','sweater','vest'].includes(type)){
+    const sleeves = type==='vest'?'':`<path d="M 143 89 L 77 125 Q 66 143 54 209 L 98 225 L 138 148 Z" fill="url(#fabric)" stroke="#512f42" stroke-opacity=".28" stroke-width="2"/><path d="M 297 89 L 363 125 Q 374 143 386 209 L 342 225 L 302 148 Z" fill="url(#fabric)" stroke="#512f42" stroke-opacity=".28" stroke-width="2"/><path d="M54 209 98 225 105 209 59 193ZM342 225 386 209 381 193 335 209Z" fill="${fill}" stroke="white" stroke-opacity=".28"/>`;
+    shape=`${sleeves}<path d="M 142 89 L 183 76 Q 220 100 257 76 L 298 89 L 321 144 L 306 287 L 134 287 L 119 144 Z" fill="url(#fabric)" stroke="#512f42" stroke-opacity=".28" stroke-width="2"/>
+    <path d="M134 264 H306 V287 H134 Z" fill="url(#rib)"/><path d="M183 76 Q220 121 257 76" fill="none" stroke="${light}" stroke-opacity=".43" stroke-width="6"/>`;
+    if(type==='cardigan')shape+=`<path d="M220 108 L220 286" stroke="#eedbdc" stroke-width="11"/><path d="M226 106 L226 288" stroke="${fill}" stroke-width="2"/>${[131,155,179,203,227,251].map(y=>`<circle cx="218" cy="${y}" r="4" fill="#49313b" stroke="#e0cbd0" stroke-width="1"/>`).join('')}`;
+  }else if(type==='bag'){
+    shape=`<path d="M120 138 Q120 60 220 60 Q320 60 320 138" stroke="${fill}" stroke-width="18" fill="none" stroke-linecap="round"/><path d="M95 141 Q220 129 345 141 L325 290 Q220 312 115 290Z" fill="url(#fabric)"/><path d="M95 163H345" stroke="white" stroke-opacity=".35" stroke-width="5"/>`;
+  }else if(type==='wallet'||type==='pouch'){
+    shape=`<rect x="88" y="111" width="264" height="166" rx="${type==='wallet'?13:28}" fill="url(#fabric)" stroke="#6b4354" stroke-opacity=".3" stroke-width="2"/><path d="M94 153H346" stroke="#eedde1" stroke-width="8"/>${type==='wallet'?'<circle cx="220" cy="163" r="8" fill="#e9cdd5"/>':'<path d="M125 148H314" stroke="#735062" stroke-width="3" stroke-dasharray="5 4"/>'}`;
+  }else{
+    shape=`<path d="M156 36 Q164 40 165 93 L165 250 Q165 297 218 299 L257 299 Q287 296 287 257 L287 69 Q287 37 279 36Z" fill="url(#fabric)"/><path d="M156 53H280M166 276H286" stroke="white" stroke-width="5" stroke-opacity=".3"/>`;
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${htmlEsc(names[type]||'뜨개 작품')} 예상 실루엣 (실제 완성품의 정확한 렌더링 아님)" viewBox="0 0 440 335">${defs}<ellipse cx="219" cy="311" rx="124" ry="12" fill="#544044" opacity=".09"/>${shape}<text x="19" y="312" fill="#7d7680" font-family="sans-serif" font-size="10">CONCEPT · 참고용 실루엣</text></svg>`;
+}
+function diagramSVG(type,width,length){
+  const w=num(width), l=num(length), clothing=['cardigan','sweater','vest'].includes(type);
+  const outline= clothing?
+    `<path d="M145 73 L187 58 L205 81 L220 81 L239 58 L281 73 L321 132 L291 155 L270 128 L270 290 L156 290 L156 128 L129 155 L99 132 Z" fill="none" stroke="#4d5261" stroke-width="2.6"/><path d="M212 81 V289" stroke="#c7a9b5" stroke-dasharray="5 5"/>`:
+    `<rect x="139" y="73" width="148" height="217" rx="6" fill="none" stroke="#4d5261" stroke-width="2.6"/>`;
+  return `<svg viewBox="0 0 470 345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="목표 폭과 길이를 표시한 개략 도면">
+    <rect x="0" y="0" width="470" height="345" fill="#fff"/>${outline}
+    <path d="M114 304H309 M114 300V310 M309 300V310 M330 73V290 M326 73H334 M326 290H334" stroke="#b46e87" stroke-width="1.5"/>
+    <text x="211" y="322" text-anchor="middle" font-size="15" fill="#85405b" font-family="sans-serif">${w} cm ${clothing?'(둘레)':'(폭)'}</text>
+    <text x="350" y="186" font-size="15" fill="#85405b" font-family="sans-serif">${l} cm</text>
+    <text x="13" y="28" font-size="11" fill="#8b94a2" font-family="sans-serif">개념도 · 실루엣 비례 및 성형 치수 미반영</text></svg>`;
+}
+function appendLinkedText(target, message){
+  // Turn terms inside generated instructions into YouTube search links, without injecting user HTML.
+  const keys=[...stitchTerms].sort((a,b)=>b[0].length-a[0].length);
+  let index=0, lower=message.toLowerCase();
+  while(index<message.length){
+    let found=null;
+    for(const [term,description] of keys){const pos=lower.indexOf(term.toLowerCase(),index);if(pos<0)continue;if(!found||pos<found.pos)found={term,description,pos};}
+    if(!found){target.append(document.createTextNode(message.slice(index)));break;}
+    if(found.pos>index)target.append(document.createTextNode(message.slice(index,found.pos)));
+    const a=document.createElement('a');a.className='inline-term';a.href=youtubeSearch(found.term);a.target='_blank';a.rel='noopener noreferrer';a.textContent=message.slice(found.pos,found.pos+found.term.length);
+    a.title=`${found.description} — 영상 찾기`;target.append(a);
+    index=found.pos+found.term.length;
+  }
+}
+function renderTerms(){
+  const term=$('termSearch').value.trim().toLowerCase();const box=$('terms');box.replaceChildren();
+  for(const [word,desc] of stitchTerms){if(term && !`${word} ${desc}`.toLowerCase().includes(term))continue;
+    const a=document.createElement('a');a.className='term-link';a.textContent=word;a.href=youtubeSearch(word);a.target='_blank';a.rel='noopener noreferrer';a.title=`${desc} — 유튜브 검색 열기`;box.append(a);
+  }
+  if(!box.children.length){const p=document.createElement('p');p.className='footnote';p.textContent='검색되는 용어가 없습니다.';box.append(p);}
+}
+function render(){
+  const f=data();txt('colorText',f.color.toUpperCase());
+  const clothing=['cardigan','sweater','vest'].includes(f.projectType);
+  txt('targetWidthLabel',clothing?'목표 가슴둘레 (cm)':'목표 폭 (cm)');
+  txt('baseWidthLabel',clothing?'원본 가슴둘레 (cm)':'원본 폭 (cm)');
+  txt('metricWidthLabel',clothing?'예상 가슴둘레':'예상 폭');
+  txt('previewTitle',`${names[f.projectType]||'작품'} · 맞춤 설계`);
+  txt('previewSize',`${prettySize(f.size)} · ${clothing?'둘레':'폭'} ${f.targetWidth}cm × 길이 ${f.targetLength}cm`);
+  txt('previewCraft',f.craft==='crochet'?'코바늘':'대바늘');
+  const preview=$('preview');
+  if(photoURL){let im=preview.querySelector('img');if(!im){im=document.createElement('img');im.alt='선택한 참고 사진';preview.replaceChildren(im)}im.src=photoURL;}
+  else preview.innerHTML=projectSVG(f.projectType,f.color);
+  $('diagram').innerHTML=diagramSVG(f.projectType,f.targetWidth,f.targetLength);
+  let g;
+  try{g=calculateGauge(f);lastGauge=g;
+    txt('fixedWidth',cm(g.fixedWidth));txt('fixedLength',cm(g.fixedLength));
+    txt('widthDelta',`${g.widthDiff>0?'+':''}${g.widthDiff}cm (${g.widthChangePct>0?'+':''}${g.widthChangePct}%)`);
+    txt('lengthDelta',`${g.lengthDiff>0?'+':''}${g.lengthDiff}cm (${g.lengthChangePct>0?'+':''}${g.lengthChangePct}%)`);
+    ['widthDelta','lengthDelta'].forEach(id=>$(id).classList.toggle('neutral',Math.abs(Number(id==='widthDelta'?g.widthDiff:g.lengthDiff))<.05));
+    txt('stitchesNeeded',`${num(g.targetWidthEquivalentStitches)}코 (기존 등가 ${num(g.originalWidthEquivalentStitches)}코)`);
+    txt('rowsNeeded',`${num(g.targetLengthEquivalentRows)}단 (기존 등가 ${num(g.originalLengthEquivalentRows)}단)`);
+    txt('gaugeDisclaimer',clothing?'둘레·길이에서 환산한 등가 코·단 수입니다. 실제 시작 코 수, 앞판·뒤판 배분, 래글런 증가 주기는 자동 생성되지 않습니다.':'전체 패널 폭·길이에 대응하는 코·단 수이며 가장자리·무늬 반복을 별도로 검토해야 합니다.');
+  }catch(error){lastGauge=null;['fixedWidth','fixedLength','widthDelta','lengthDelta','stitchesNeeded','rowsNeeded'].forEach(id=>txt(id,'—'));txt('gaugeDisclaimer',error.message);}
+  const empty=$('yarnEmpty'),values=$('yarnValues');
+  try{if(!g)throw new Error('게이지 수치를 먼저 확인하세요.');const y=calculateYarn(f,g);lastYarn=y;empty.hidden=true;values.hidden=false;
+    txt('yarnBalls',num(y.skeins));txt('yarnMeters',`${num(y.estimateMeters)}m`);txt('yarnReserve',`${num(y.reserveMeters)}m`);txt('yarnGrams',`${num(y.gramsConsumed)}g`);
+    txt('yarnRange',`${y.minSkeins}~${y.maxSkeins}타래`);
+    txt('yarnMode',`${y.mode} · ±${y.uncertaintyPct}%의 가정 오차 범위를 표시했습니다. 원본 권장 타래 수에는 남는 실이 포함될 수 있으며, 원본 실 사용률·면적 비례·같은 조직이라는 가정이 적용됩니다. 원본 구간별 실량 및 짜임새 변화를 알 수 없어 확정 구매량은 아닙니다.`);
+  }catch(error){lastYarn=null;empty.hidden=false;values.hidden=true;empty.textContent=error.message;}
+  lastAdvice = g ? modificationAdvice(f,g):['올바른 게이지·치수를 입력하시면 수정 방법이 표시됩니다.'];
+  const advice=$('advice');advice.replaceChildren();lastAdvice.forEach(str=>{const li=document.createElement('li');appendLinkedText(li,str);advice.append(li)});
+  try{lastPattern=rectangularPattern(f)}catch(_){lastPattern=null}
+  const pattern=$('patternGuide');pattern.replaceChildren();
+  if(lastPattern){txt('patternLevel','직사각형 기본 패턴');
+    const p=document.createElement('p');p.textContent=`${lastPattern.stitchName} 기준 ${lastPattern.panels}개 패널, 각 ${lastPattern.stitches}코 × 약 ${lastPattern.rows}단 (${f.targetWidth} × ${lastPattern.panelLength}cm) — 새 게이지 기준.`;pattern.append(p);
+    const ul=document.createElement('ul');for(const line of lastPattern.steps){const li=document.createElement('li');appendLinkedText(li,line);ul.append(li)}pattern.append(ul);
+    const w=document.createElement('p');w.className='safety';w.textContent=`마감: ${lastPattern.assembly} 무늬 반복과 실제 게이지는 검증하세요.`;pattern.append(w);
+  }else{txt('patternLevel','의류 개략 설계서');
+    const p=document.createElement('p');p.textContent='현재는 신체 치수와 게이지 기반 개략 설계도입니다. 소매 분리·래글런 증가·목둘레 성형에 필요한 원본의 부위별 코 수와 단별 기법을 확보하지 않았으므로 제작 가능한 전체 의류 패턴을 자동 생성하지 않습니다.';pattern.append(p);
+    const p2=document.createElement('p');p2.className='safety';p2.textContent='원본 유료 도안을 그대로 복사하지 않습니다. 본 자료는 사용자가 소유한 도안을 수정할 때 참고하는 계산서입니다.';pattern.append(p2);
+  }
+  save();
+}
+function simple(tag,className,textContent){const node=document.createElement(tag);if(className)node.className=className;if(textContent!==undefined)node.textContent=String(textContent);return node;}
+function appendText(parent,tag,klass,text){const e=simple(tag,klass,text);parent.append(e);return e;}
+function newPage(page,total){const p=simple('article','print-page');const head=simple('header','print-top');head.append(simple('b','', '✳ StitchLab Studio'),simple('span','',`맞춤 뜨개 설계서 · ${page} / ${total}`));p.append(head);const footer=simple('footer');footer.append(simple('span','',`StitchLab · 사용자 입력 기반 개략 도안`),simple('span','',`${page} / ${total}`));p.append(footer);$('printArea').append(p);return p;}
+function printList(parent,lines){const ol=simple('ol','print-list');for(const line of lines){ol.append(simple('li','',line))}parent.append(ol);}
+function printTable(parent,items){const t=simple('table','print-meta');for(const [key,value] of items){const tr=document.createElement('tr');tr.append(simple('th','',key),simple('td','',value));t.append(tr)}parent.append(t);}
+function printDocument(){
+  if(!lastGauge){toast('올바른 크기와 게이지를 입력해주세요.');return}
+  const f=data(),g=lastGauge,y=lastYarn,p=lastPattern,print=$('printArea');print.replaceChildren();
+  const p1=newPage(1,3);
+  appendText(p1,'h1','print-title',f.name||'나의 뜨개 도안');
+  appendText(p1,'p','print-sub',`${names[f.projectType]} · ${f.craft==='crochet'?'코바늘':'대바늘'} · ${prettySize(f.size)} · 선택 색상 ${f.color}`);
+  const img=simple('div',`print-image ${photoURL?'photo':''}`);
+  if(photoURL){const image=document.createElement('img');image.src=photoURL;image.alt='사용자가 선택한 참고 사진';img.append(image)}
+  else img.innerHTML=projectSVG(f.projectType,f.color);
+  p1.append(img);
+  printTable(p1,[['목표 완성 폭/가슴둘레',`${f.targetWidth} cm`],['목표 완성 길이',`${f.targetLength} cm`],['기존 게이지 (10cm)',`${f.baseSt}코 × ${f.baseRows}단`],['새 게이지 (10cm)',`${f.newSt}코 × ${f.newRows}단`]]);
+  appendText(p1,'p','print-small','표지의 실루엣은 개념 이미지이며 실제 완성 사진이 아닙니다. 사진 업로드 시 사용자의 참고 사진이 표시됩니다.');
+  const p2=newPage(2,3);
+  appendText(p2,'h2','print-h2','01 · 게이지와 치수 변화');
+  appendText(p2,'p','print-p',`원본 코·단 수를 그대로 유지하면 완성 ${['cardigan','sweater','vest'].includes(f.projectType)?'가슴둘레':'폭'}는 약 ${cm(g.fixedWidth)} (${g.widthDiff>0?'+':''}${g.widthDiff}cm), 길이는 약 ${cm(g.fixedLength)} (${g.lengthDiff>0?'+':''}${g.lengthDiff}cm)로 예상됩니다.`);
+  printTable(p2,[['기존 치수',`${f.baseWidth}cm × ${f.baseLength}cm`],['목표 치수',`${f.targetWidth}cm × ${f.targetLength}cm`],['목표 폭 등가 코 수',`${g.targetWidthEquivalentStitches}코 (원본 ${g.originalWidthEquivalentStitches}코)`],['목표 길이 등가 단 수',`${g.targetLengthEquivalentRows}단 (원본 ${g.originalLengthEquivalentRows}단)`]]);
+  appendText(p2,'h2','print-h2','02 · 대체 실 추정 사용량');
+  if(y)printTable(p2,[['추정 소모 길이',`${num(y.estimateMeters)}m`],['여유분 포함',`${num(y.reserveMeters)}m`],['권장 추정 구매량',`${y.skeins}타래 (추정 범위 ${y.minSkeins}~${y.maxSkeins})`],['추정 소모 무게',`${num(y.gramsConsumed)}g`],['근거',y.mode]]);
+  else appendText(p2,'p','print-warning','실 길이(m/타래) 정보가 부족하여 수량 계산을 생략했습니다.');
+  appendText(p2,'p','print-warning','치수 계산은 고정 코 수·단 수 및 균일 게이지라는 가정입니다. 실제 의류의 시작코, 목둘레·소매·래글런 성형은 별도 검토가 필수입니다. 실 소요량은 원본 타래 대비 비례 추정으로 실측값이 아닙니다.');
+  const d=simple('div','print-diagram');d.innerHTML=diagramSVG(f.projectType,f.targetWidth,f.targetLength);p2.append(d);
+  const p3=newPage(3,3);
+  appendText(p3,'h2','print-h2','03 · 작품 변형 작업 지침');printList(p3,lastAdvice);
+  appendText(p3,'h2','print-h2','04 · 기초 제작 내용');
+  if(p){appendText(p3,'p','print-p',`${p.stitches}코 × ${p.rows}단 · 패널 ${p.panels}장 · ${p.stitchName} 기본 직사각형 설계`);printList(p3,p.steps);appendText(p3,'p','print-p',`마감: ${p.assembly}`)}
+  else appendText(p3,'p','print-warning','의류의 완성 가능한 단별 전체 제작 명세는 포함하지 않습니다. 목둘레·앞판·소매 분리·래글런 각 구간의 실제 코 수 데이터가 있어야 변형 도안을 산출할 수 있습니다.');
+  if(f.memo)appendText(p3,'p','print-p',`개인 메모: ${f.memo}`);
+  appendText(p3,'h2','print-h2','05 · 용어별 영상 찾기');
+  const links=simple('div','print-links');for(const [term] of stitchTerms.slice(0,12)){const a=simple('a','',`${term} ↗`);a.href=youtubeSearch(term);links.append(a)}p3.append(links);
+  appendText(p3,'p','print-small','용어 링크는 유튜브 검색 결과 페이지로 연결됩니다. 외부 API 및 사용량 기반 유료 기능을 사용하지 않습니다.');
+  // Native print dialog -> Save as PDF: entirely local and no token billing.
+  window.print();
+}
+function applySize(){const size=$('size').value,chosen=sampleSizes[size];if(!chosen)return;for(const [key,val] of Object.entries({baseWidth:chosen.width,baseLength:chosen.length,targetWidth:chosen.width,targetLength:chosen.length,originalBalls:chosen.balls}))$(key).value=val;render()}
+function applyType(){const type=$('projectType').value;
+  const defaultsByType={cardigan:{width:105,length:54,balls:6,st:12,rows:18,craft:'knitting',buttons:6,sleeve:5},sweater:{width:105,length:62,balls:6,st:16,rows:22,craft:'knitting',buttons:0,sleeve:5},vest:{width:105,length:55,balls:5,st:16,rows:22,craft:'knitting',buttons:0,sleeve:0},bag:{width:30,length:28,balls:3,st:16,rows:18,craft:'crochet',buttons:0,sleeve:0},pouch:{width:20,length:14,balls:2,st:19,rows:21,craft:'crochet',buttons:0,sleeve:0},wallet:{width:11,length:8,balls:1,st:20,rows:23,craft:'crochet',buttons:0,sleeve:0},scarf:{width:22,length:160,balls:4,st:18,rows:26,craft:'knitting',buttons:0,sleeve:0}};
+  const d=defaultsByType[type];
+  if(!d)return;
+  const mapped={baseWidth:d.width,targetWidth:d.width,baseLength:d.length,targetLength:d.length,baseSt:d.st,baseRows:d.rows,newSt:d.st,newRows:d.rows,originalBalls:d.balls,craft:d.craft,buttons:d.buttons,sleeveAdd:d.sleeve};
+  for(const [key,value]of Object.entries(mapped))$(key).value=value;
+  $('size').value='custom';
+  $('name').value=`나의 ${names[type]} 도안`;
+  render();
+}
+function downloadText(filename,text,mime){const a=document.createElement('a');const url=URL.createObjectURL(new Blob([text],{type:mime}));a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+async function importFile(file){if(!file||file.size>400000){toast('400KB 이하의 프로젝트 JSON만 불러올 수 있습니다.');return}try{const parsed=JSON.parse(await file.text());if(parsed?.schema!==2||!parsed.values||typeof parsed.values!=='object')throw new Error('지원하지 않는 파일 형식입니다.');setValues(parsed.values);render();toast('프로젝트를 불러왔습니다. 사진은 별도 선택해주세요.')}catch(error){toast(`불러오기 실패: ${error.message}`)}}
+function bind(){
+  load();render();renderTerms();
+  for(const id of fields){if(id==='size'||id==='projectType')continue;$(id).addEventListener('input',render);$(id).addEventListener('change',render)}
+  $('size').addEventListener('change',applySize);$('projectType').addEventListener('change',applyType);
+  $('termSearch').addEventListener('input',renderTerms);
+  $('photo').addEventListener('change',e=>{const file=e.target.files?.[0];if(!file)return;if(file.size>30*1024*1024||(file.type&&!file.type.startsWith('image/'))){toast('30MB 이하의 이미지 파일을 선택해주세요.');e.target.value='';return;}const newURL=URL.createObjectURL(file);const im=new Image();im.onload=()=>{if(photoURL)URL.revokeObjectURL(photoURL);photoURL=newURL;$('photoText').textContent=file.name;$('removePhoto').hidden=false;render();toast('사진을 불러왔습니다.');};im.onerror=()=>{URL.revokeObjectURL(newURL);toast('이 브라우저에서 표시할 수 없는 사진 형식입니다. JPG, PNG 또는 WebP로 선택해주세요.');e.target.value='';};im.src=newURL;});
+  $('removePhoto').addEventListener('click',()=>{if(photoURL)URL.revokeObjectURL(photoURL);photoURL=null;$('photo').value='';$('photoText').textContent='아래 버튼으로 사진을 선택하세요';$('removePhoto').hidden=true;render()});
+  $('sampleYarn').addEventListener('click',()=>{$('originalMeters').value='120';$('newMeters').value='160';render();toast('120m/160m는 계산 연습용 가상값입니다. 실 라벨 수치로 바꿔주세요.')});
+  $('printTop').addEventListener('click',printDocument);$('printBottom').addEventListener('click',printDocument);
+  $('downloadJson').addEventListener('click',()=>{downloadText('stitchlab-project.json',JSON.stringify({schema:2,exportedAt:new Date().toISOString(),values:data(),note:'Photos are never included in JSON export.'},null,2),'application/json');toast('설정을 저장했습니다.')});
+  $('importJson').addEventListener('change',e=>{importFile(e.target.files?.[0]);e.target.value=''});
+  $('reset').addEventListener('click',()=>{if(!confirm('입력 내용을 초기 설정으로 되돌릴까요?'))return;setValues(defaults);$('size').value='XS';$('termSearch').value='';if(photoURL){URL.revokeObjectURL(photoURL);photoURL=null}$('photo').value='';$('photoText').textContent='아래 버튼으로 사진을 선택하세요';$('removePhoto').hidden=true;render();renderTerms();toast('초기화했습니다.')});
+}
+bind();
+
+</script>
+</body>
+</html>
